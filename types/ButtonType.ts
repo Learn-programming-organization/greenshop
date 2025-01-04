@@ -6,4 +6,5 @@ export interface ButtonType {
     rightIcon?: React.JSX.Element;
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
     extraClass?: string;
+    type: "button" | "submit" | "reset";
 }

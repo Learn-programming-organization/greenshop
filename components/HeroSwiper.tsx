@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from "next/image";
+import Slide1 from "./Slide1";
 
 interface SlideData {
   id: number;
@@ -43,15 +44,15 @@ export default function HeroSwiper() {
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={30}
         slidesPerView={1}
-        navigation
+        // navigation
         pagination={{ clickable: true }}
         autoplay={{
-          delay: 3000,
+          delay: 100000, // 3000
           disableOnInteraction: false,
         }}
         className="w-full h-full"
       >
-        {slides.map((slide) => (
+        {/* {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div className="w-full h-full relative grid place-items-center">
               <Image
@@ -67,7 +68,17 @@ export default function HeroSwiper() {
               </div>
             </div>
           </SwiperSlide>
-        ))}
+        ))} */}
+
+        <SwiperSlide className="mx-auto my-4">
+          <Slide1 />
+        </SwiperSlide>
+        <SwiperSlide>
+          Slide2
+        </SwiperSlide>
+        <SwiperSlide>
+          Slide3
+        </SwiperSlide>
       </Swiper>
     </div>
   );
