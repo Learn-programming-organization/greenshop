@@ -8,34 +8,33 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import Image from "next/image";
 import Slide1 from "./Slide1";
 
-interface SlideData {
-  id: number;
-  image: string;
-  title: string;
-  width: number;
-  height: number;
-}
+// interface SlideData {
+//   id: number;
+//   image: string;
+//   title: string;
+//   width: number;
+//   height: number;
+// }
 
-const slides: SlideData[] = [
-  {
-    id: 1,
-    image: "/image1.png",
-    title: "Slide 1",
-    width: 225,
-    height: 225,
-  },
-  {
-    id: 2,
-    image: "/image2.png",
-    title: "Slide 2",
-    width: 240,
-    height: 210,
-  },
-  // Boshqa slide'lar...
-];
+// const slides: SlideData[] = [
+//   {
+//     id: 1,
+//     image: "/image1.png",
+//     title: "Slide 1",
+//     width: 225,
+//     height: 225,
+//   },
+//   {
+//     id: 2,
+//     image: "/image2.png",
+//     title: "Slide 2",
+//     width: 240,
+//     height: 210,
+//   },
+//   // Boshqa slide'lar...
+// ];
 
 export default function HeroSwiper() {
   return (

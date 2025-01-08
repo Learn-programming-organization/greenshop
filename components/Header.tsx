@@ -5,7 +5,7 @@ import { NavListType } from "@/types/NavListType";
 import Image from "next/image";
 import Link from "next/link";
 import CustomButton from "./CustomButton";
-import { Modal } from "antd";
+import { Badge, Modal } from "antd";
 import { FormEvent, useContext, useState } from "react";
 import LoginInputs from "./LoginInputs";
 import { Context } from "@/context/Context";
@@ -14,9 +14,10 @@ import RegisterInputs from "./RegisterInputs";
 import RegisterVerify from "./RegisterVerify";
 import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
+import { useQuery } from "@tanstack/react-query";
 
 const Header = () => {
-  const { setToken } = useContext(Context);
+  const { token, setToken } = useContext(Context);
 
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [isLogin, setIsLogin] = useState<
@@ -107,6 +108,14 @@ const Header = () => {
     }
   }
 
+  const { data: CategoryBasketList = [] } = useQuery({
+    queryKey: ['basketCount'],
+    queryFn: () => instance().get("/basket", {
+      params: {page: 1, limit: 1000},
+      headers: {Authorization: `Bearer ${token}`}
+    }).then(res => res.data)
+  })
+
   return (
     <>
       <header className="pt-[25px]">
@@ -138,7 +147,9 @@ const Header = () => {
               <SearchIcon />
             </button>
             <button>
-              <BasketIcon />
+              <Badge count={CategoryBasketList?.TotalCount} size="small" color="green">
+                <BasketIcon />
+              </Badge>
             </button>
             <CustomButton
               type="button"
